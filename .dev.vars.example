@@ -1,0 +1,2 @@
+# 复制为 .dev.vars，仅用于本地 wrangler dev；不要提交真实 Token。
+ADMIN_TOKEN=dev-token-change-me

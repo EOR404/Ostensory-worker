@@ -159,7 +159,7 @@ npm run db:init:local
 npx wrangler dev
 ```
 
-本地 Secret 可以放进 `.dev.vars`，该文件已被 `.gitignore` 排除：
+把 `.dev.vars.example` 复制成 `.dev.vars`，该文件已被 `.gitignore` 排除：
 
 ```text
 ADMIN_TOKEN=dev-token-change-me
