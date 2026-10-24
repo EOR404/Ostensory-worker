@@ -9,6 +9,8 @@
 
 没有常驻服务器，个人小站在 Cloudflare 免费额度内通常可以零成本运行；实际额度以 Cloudflare 官网当前政策为准。
 
+当前版本：**0.0.1dev**（`package.json` 中按 npm 要求写成等价的 `0.0.1-dev`）。页面页脚“由 Ostensory 驱动”的 Ostensory 链接到本仓库。
+
 ## 它长什么样
 
 - `/`：图库和上传页
