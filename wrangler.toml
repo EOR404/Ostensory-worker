@@ -1,0 +1,22 @@
+name = "ostensory-worker"
+main = "src/index.js"
+compatibility_date = "2026-01-01"
+
+# Static gallery UI. The Worker handles /api/* and /i/* first.
+[assets]
+directory = "./public"
+binding = "ASSETS"
+
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "ostensory-images"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "ostensory-worker"
+database_id = "REPLACE_WITH_D1_DATABASE_ID"
+
+[vars]
+MAX_UPLOAD_MB = "20"
+MAX_STORAGE_MB = "100"
+PUBLIC_UPLOAD = "0"

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ostensory Worker · 图片仓库</title>
+  <meta name="description" content="部署在 Cloudflare Workers 上的轻量图床">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/"><span class="brand-mark">◒</span><span>Ostensory <small>WORKER</small></span></a>
+    <div class="topbar-tools">
+      <span id="health" class="health">连接中…</span>
+      <button id="token-button" class="button ghost" type="button">设置 Token</button>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="hero">
+      <p class="eyebrow">CLOUDFLARE · R2 · D1</p>
+      <h1>一个跑在 Workers 上的轻量图床</h1>
+      <p class="muted">图片写入 R2，信息写入 D1；没有服务器要维护，免费额度内零成本。</p>
+    </section>
+
+    <section id="dropzone" class="dropzone" tabindex="0" role="button" aria-label="上传图片">
+      <input id="file-input" type="file" accept="image/png,image/jpeg,image/webp,image/gif" multiple hidden>
+      <div class="drop-icon">＋</div>
+      <p><strong>拖入图片</strong>，或点击选择文件</p>
+      <p class="muted small">支持 PNG / JPG / WebP / GIF，单文件上限由 Worker 配置决定。</p>
+      <div id="upload-status" class="upload-status" role="status"></div>
+    </section>
+
+    <section class="gallery-section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">LIBRARY</p>
+          <h2>图片</h2>
+        </div>
+        <span id="count" class="muted small"></span>
+      </div>
+      <div id="gallery" class="gallery"></div>
+      <p id="empty" class="empty" hidden>还没有图片，先上传一张。</p>
+      <div class="load-more"><button id="load-more" class="button ghost" type="button" hidden>加载更多</button></div>
+    </section>
+  </main>
+
+  <dialog id="token-dialog" class="dialog">
+    <form method="dialog" class="dialog-card">
+      <h2>管理员 Token</h2>
+      <p class="muted small">Token 只保存在当前浏览器的 sessionStorage，不会写进 URL 或仓库。</p>
+      <label>ADMIN_TOKEN
+        <input id="token-input" type="password" autocomplete="current-password" placeholder="wrangler secret put ADMIN_TOKEN">
+      </label>
+      <label class="check"><input id="token-remember" type="checkbox" checked> 本次浏览器会话内记住</label>
+      <div class="dialog-actions">
+        <button class="button ghost" value="cancel" type="submit">取消</button>
+        <button id="token-save" class="button" value="default" type="submit">保存</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <script src="/app.js" defer></script>
+</body>
+</html>
